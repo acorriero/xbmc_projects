@@ -1,18 +1,21 @@
-import xbmcgui, xbmc
+import sys, urllib
+import xbmc, xbmcgui, xbmcaddon, xbmcplugin
 
 def playMedia(title, thumbnail, link, mediaType='Video'):
-    '''Plays a video
+    """Plays a video
+    
     Arguments:
     title: the title to be displayed
-    thumbnail: the thumbnail to be used as an icon
+    thumbnail: the thumbnail to be used as an icon and thumbnail
     link: the link to the media to be played
-    mediaType: the type of media to play: Video, Pictures, Music, or Programs
-    '''
+    mediaType: the type of media to play, defaults to Video. Known values are Video, Pictures, Music and Programs
+    """
+    
     li = xbmcgui.ListItem(label=title, iconImage=thumbnail, thumbnailImage=thumbnail, path=link)
     li.setInfo(type=mediaType, infoLabels={ "Title": title })
     xbmc.Player().play(item=link, listitem=li)
     
-def parseParameters(inputString=sys.argv[2]):
+def parseParameters(inputString): #=sys.argv[2]):
     """Parses a parameter string starting at the first ? found in inputString
     
     Argument:
@@ -23,7 +26,7 @@ def parseParameters(inputString=sys.argv[2]):
     parameters = {}
     p1 = inputString.find('?')
     if p1 >= 0:
-        splitParameters = iputString[p1 + 1].split('&')
+        splitParameters = inputString[p1 + 1].split('&')
         for nameValuePair in splitParameters:
             if len(nameValuePair) > 0:
                 pair = nameValuePair.split('=')
