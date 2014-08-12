@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.myplugin"
+	name="My first Plugin"
+	provider-name="ace"
+	version="1.0.0">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Summary: This is my first plugin.</summary>
+		<description lang="en">This is a longer description of my first plugin.</description>
+		<platform>all</platform>
+		<language>en</language>
+		<disclaimer>report any issues with this addon to ac@no-mail-yet.com</disclaimer>
+	</extension>
+</addon>
